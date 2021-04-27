@@ -16,7 +16,7 @@ public class MatrizTest {
     public void deveRetornarObjetoQuandoRequisitado(){
         Matriz m = new Matriz(10,10);
         Object r = new Rua(2);
-        m.addCelula(r,1,1);
+        m.setCelula(r,1,1);
 
         Object valorRecebido = m.getCelula(1,1);
 

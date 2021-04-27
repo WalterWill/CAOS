@@ -14,7 +14,7 @@ public class Matriz {
         return count;
     }
 
-    public void addCelula(Object celula, int i, int j){
+    public void setCelula(Object celula, int i, int j){
         tabela[i][j] = celula;
     }
 

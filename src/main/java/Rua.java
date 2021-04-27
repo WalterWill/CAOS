@@ -20,4 +20,12 @@ public class Rua extends Celula{
         }
         return false;
     }
+
+    public void ocuparVia(Object veiculo, int via){
+        this.via.set(via, veiculo);
+    }
+
+    public void desocuparVia(int via){
+        this.via.set(via, VIA_VAZIA);
+    }
 }

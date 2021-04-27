@@ -20,4 +20,23 @@ public class RuaTest {
 
         Assert.assertEquals(valorEsperado, valorRecebido);
     }
+
+    @Test
+    public void deveOcuparViaQuandoInserirVeiculo(){
+        Rua r = new Rua(1);
+        Object veiculo = new Object();
+        r.ocuparVia(veiculo, 0);
+
+        Assert.assertFalse(r.isFree(0));
+    }
+
+    @Test
+    public void deveDesocuparViaQuandoRemoverVeiculo() {
+        Rua r = new Rua(1);
+        Object veiculo = new Object();
+        r.ocuparVia(veiculo, 0);
+        r.desocuparVia(0);
+
+        Assert.assertTrue(r.isFree(0));
+    }
 }

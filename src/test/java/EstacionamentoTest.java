@@ -23,4 +23,17 @@ public class EstacionamentoTest {
 
         Assert.assertEquals(valorEsperado, valorRecebido);
     }
+
+    @Test
+    public void deveDesocuparVagaQuandoRequisitado(){
+        Estacionamento e = new Estacionamento();
+        Object a = new Object();
+        e.estacionar(a);
+        e.liberarVaga();
+
+        Estado valorEsperado = Estado.LIVRE;
+        Estado valorRecebido = e.getEstado();
+
+        Assert.assertEquals(valorEsperado, valorRecebido);
+    }
 }
