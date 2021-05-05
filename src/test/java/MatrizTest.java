@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class MatrizTest {
     @Test
     public void deveInstanciarMatrizQuandoInformadoTamanho(){
@@ -30,6 +32,28 @@ public class MatrizTest {
         Object valorRecebido = m.getCelula(1,1);
 
         Assert.assertNull(valorRecebido);
+    }
+
+    @Test
+    public void devePrintarMatrizQuandoRequisitado() {
+        Matriz m = new Matriz(2,2);
+        Rua r = new Rua(1);
+
+        for (int i = 0; i < 2; i++){
+            for (int j = 0; j < 2; j++){
+                m.setCelula(r, i, j);
+            }
+        }
+
+        try {
+            m.printMatriz();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }

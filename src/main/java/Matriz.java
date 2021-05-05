@@ -1,4 +1,7 @@
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Matriz {
     private Object[][] tabela;
@@ -21,4 +24,45 @@ public class Matriz {
     public Object getCelula(int i, int j){
         return tabela[i][j];
     }
+
+    public void printMatriz() throws IOException, InterruptedException {
+        clearScreen();
+        for (int i = 0; i < tabela.length; i++){
+            for (int j = 0; j < tabela.length; j++){
+                System.out.print(tabela[i][j]);
+            }
+            System.out.println("");
+        }
+    }
+
+    public void runtimekelly() throws IOException {
+        Runtime.getRuntime().exec("cls");
+    }
+/*
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+*/
+    public void clearScreen()
+    {
+        try
+        {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows"))
+            {
+                Runtime.getRuntime().exec("cls");
+            }
+            else
+            {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e)
+        {
+            //  Handle any exceptions.
+        }
+    }
 }
+

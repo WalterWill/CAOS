@@ -7,6 +7,7 @@ public class Estacionamento extends Celula{
     public Estacionamento(){
         super(CATEGORIA_PADRAO);
         this.estado = Estado.LIVRE;
+        super.letra = new String("E");
     }
 
     public void estacionar(Object veiculo){
