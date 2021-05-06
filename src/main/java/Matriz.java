@@ -35,15 +35,6 @@ public class Matriz {
         }
     }
 
-    public void runtimekelly() throws IOException {
-        Runtime.getRuntime().exec("cls");
-    }
-/*
-    private void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-*/
     public void clearScreen()
     {
         try

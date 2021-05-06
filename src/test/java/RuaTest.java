@@ -39,4 +39,16 @@ public class RuaTest {
 
         Assert.assertTrue(r.isFree(0));
     }
+
+    @Test
+    public void deveAdicionarViaQuandoSolicitado(){
+        Via v = new Via(0,0,0);
+        Rua r = new Rua(2);
+        r.setVia(0,v);
+
+        Object objetoRecebido = r.getVia(0);
+        Object objetoEsperado = v;
+
+        Assert.assertEquals(objetoEsperado, objetoRecebido);
+    }
 }

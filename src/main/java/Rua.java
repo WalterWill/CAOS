@@ -32,5 +32,13 @@ public class Rua extends Celula{
         this.via.set(via, VIA_VAZIA);
     }
 
+    public void setVia(int index, Object via){
+        this.via.set(index, via);
+    }
+
+    public Object getVia(int index){
+        return via.get(index);
+    }
+
 
 }
