@@ -17,4 +17,9 @@ public class Terreno implements Celula{
     public TipoTerreno getTipo(){
         return this.tipo;
     }
+
+    @Override
+    public String getLetra() {
+        return this.letra;
+    }
 }

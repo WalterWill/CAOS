@@ -25,4 +25,9 @@ public class Estacionamento implements Celula{
     public Estado getEstado(){
         return this.estado;
     }
+
+    @Override
+    public String getLetra() {
+        return this.letra;
+    }
 }

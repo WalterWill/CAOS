@@ -1,5 +1,6 @@
 public class Sinalizacao implements Celula {
     private Sinal[] permissao;
+    private String letra;
 
     public Sinalizacao(int qntdDeCruzamentos){
         this.permissao = new Sinal[qntdDeCruzamentos];
@@ -7,6 +8,8 @@ public class Sinalizacao implements Celula {
         for(int i = 0; i < qntdDeCruzamentos; i++){
             permissao[i] = Sinal.PARE;
         }
+
+        this.letra = new String("S");
     }
 
     public void setPermissao(int index, Sinal sinal){
@@ -27,5 +30,10 @@ public class Sinalizacao implements Celula {
         for (int i = 0; i < permissao.length; i++){
             permissao[i] = Sinal.LIVRE;
         }
+    }
+
+    @Override
+    public String getLetra() {
+        return this.letra;
     }
 }

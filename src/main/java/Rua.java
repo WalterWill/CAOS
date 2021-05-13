@@ -74,4 +74,9 @@ public class Rua implements Celula{
     public int getId() {
         return id;
     }
+
+    @Override
+    public String getLetra() {
+        return this.letra;
+    }
 }
