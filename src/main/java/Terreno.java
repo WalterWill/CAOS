@@ -1,17 +1,20 @@
-public class Terreno extends Celula{
-    static final private CategoriaCelula CATEGORIA_PADRAO = CategoriaCelula.TERRENO;
+public class Terreno implements Celula{
     private TipoTerreno tipo;
+    private String letra;
 
     public Terreno(TipoTerreno tipo){
-        super(CATEGORIA_PADRAO);
         this.tipo = tipo;
 
         switch (tipo){
-            case AGUA:      super.letra = new String("A");  break;
-            case HOSPITAL:  super.letra = new String("H");  break;
-            case PARQUE:    super.letra = new String("P");  break;
+            case AGUA:      this.letra = new String("A");  break;
+            case HOSPITAL:  this.letra = new String("H");  break;
+            case PARQUE:    this.letra = new String("P");  break;
 
-            default:        super.letra = new String("T"); break;
+            default:        this.letra = new String("T"); break;
         }
+    }
+
+    public TipoTerreno getTipo(){
+        return this.tipo;
     }
 }

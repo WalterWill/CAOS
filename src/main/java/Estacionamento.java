@@ -1,16 +1,17 @@
-public class Estacionamento extends Celula{
+public class Estacionamento implements Celula{
     static final private CategoriaCelula CATEGORIA_PADRAO = CategoriaCelula.ESTACIONAMENTO;
 
-    private Object vaga;
+    private VeiculoPasseio vaga;
     private Estado estado;
+    private String letra;
 
     public Estacionamento(){
-        super(CATEGORIA_PADRAO);
         this.estado = Estado.LIVRE;
-        super.letra = new String("E");
+        this.letra = new String("E");
     }
 
-    public void estacionar(Object veiculo){
+    public void estacionar(VeiculoPasseio veiculo){
+        this.letra = veiculo.getLetra();
         this.vaga = veiculo;
         this.estado = Estado.OCUPADO;
     }
@@ -18,6 +19,7 @@ public class Estacionamento extends Celula{
     public void liberarVaga(){
         this.estado = Estado.LIVRE;
         this.vaga = null;
+        this.letra = "E";
     }
 
     public Estado getEstado(){

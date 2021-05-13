@@ -2,43 +2,76 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Rua extends Celula{
-    private List<Object> via;
-    final private Estado VIA_VAZIA = Estado.LIVRE;
-    static final private CategoriaCelula CATEGORIA_PADRAO = CategoriaCelula.RUA;
-    static final private String LETRA_PADRAO = new String("R");
+public class Rua implements Celula{
+    private Estado estado;
+    private CategoriaCelula CATEGORIA_PADRAO = CategoriaCelula.RUA;
+    private String letra;
+    private VeiculoPasseio veiculoPesseio;
+    private Ambulancia ambulancia;
+    private int id;
 
-    public Rua(int n){
-        super(CATEGORIA_PADRAO);
-        super.letra = LETRA_PADRAO;
-        via = new ArrayList<Object>();
-        for (int i = 0; i < n; i++){
-            via.add(i, VIA_VAZIA);
-        }
+    public Rua(){
+        this.letra = new String("R");
+        this.estado = Estado.LIVRE;
+        this.id = -1;
     }
 
-    public boolean isFree(int n){
-        if (via.get(n).equals(VIA_VAZIA)){
+    public Rua(int id){
+        this.letra = new String("R");
+        this.estado = Estado.LIVRE;
+        this.id = id;
+    }
+
+    public boolean isFree(){
+        if (estado.equals(Estado.LIVRE)){
             return true;
         }
         return false;
     }
 
-    public void ocuparVia(Object veiculo, int via){
-        this.via.set(via, veiculo);
+    public void ocuparRua(VeiculoPasseio veiculo){
+        this.veiculoPesseio = veiculo;
+        this.letra = veiculo.getLetra();
+        estado = Estado.OCUPADO;
     }
 
-    public void desocuparVia(int via){
-        this.via.set(via, VIA_VAZIA);
+    public void ocuparRua(Ambulancia ambulancia){
+        this.ambulancia = ambulancia;
+        this.letra = ambulancia.getLetra();
+        this.estado = Estado.OCUPADO;
     }
 
-    public void setVia(int index, Object via){
-        this.via.set(index, via);
+    public void desocuparRua(VeiculoPasseio veiculoPesseio){
+        this.letra = "R";
+        this.veiculoPesseio = null;
+        estado = Estado.LIVRE;
     }
 
-    public Object getVia(int index){
-        return via.get(index);
+    public void desocuparRua(Ambulancia ambulancia){
+        this.letra = "R";
+        this.ambulancia = null;
+        estado = Estado.LIVRE;
     }
 
+    public VeiculoPasseio getVeiculoPesseio(){
+        if(veiculoPesseio != null){
+            return this.veiculoPesseio;
+        }
+        return null;
+    }
 
+    public Ambulancia getAmbulancia(){
+        if(ambulancia != null){
+            return this.ambulancia;
+        }
+        return null;
+    }
+
+    public void setAmbulancia(Ambulancia ambulancia) {
+        this.ambulancia = ambulancia;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

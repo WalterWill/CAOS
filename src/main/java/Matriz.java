@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class Matriz {
-    private Object[][] tabela;
+    public Celula[][] tabela;
     public Matriz(int i, int j){
-        tabela = new Object[i][j];
+        tabela = new Celula[i][j];
     }
 
     public int getSize(){
@@ -17,7 +17,7 @@ public class Matriz {
         return count;
     }
 
-    public void setCelula(Object celula, int i, int j){
+    public void setCelula(Celula celula, int i, int j){
         tabela[i][j] = celula;
     }
 
@@ -25,11 +25,33 @@ public class Matriz {
         return tabela[i][j];
     }
 
+    public Rua getRua(int i, int j){
+        if(tabela[i][j] instanceof Rua){
+            return (Rua) tabela[i][j];
+        }
+        return null;
+    }
+
+    public Sinalizacao getSemafaro(int i, int j){
+        if(tabela[i][j] instanceof Sinalizacao){
+            return (Sinalizacao) tabela[i][j];
+        }
+        return null;
+    }
+
+    public Terreno getTerreno(int i, int j){
+        if(tabela[i][j] instanceof Terreno){
+            return (Terreno) tabela[i][j];
+        }
+        return null;
+    }
+
     public void printMatriz() throws IOException, InterruptedException {
-        clearScreen();
+        System.out.println( ConsoleColors.RED + ConsoleColors.GREEN_BACKGROUND + "RED COLORED" +
+                ConsoleColors.RESET + " NORMAL");
         for (int i = 0; i < tabela.length; i++){
             for (int j = 0; j < tabela.length; j++){
-                System.out.print(tabela[i][j]);
+                System.out.print( tabela[i][j]);
             }
             System.out.println("");
         }
@@ -55,5 +77,6 @@ public class Matriz {
             //  Handle any exceptions.
         }
     }
+
 }
 

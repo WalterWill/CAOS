@@ -1,27 +1,12 @@
-public class Sinalizacao {
-    private Via[] cruzamento;
+public class Sinalizacao implements Celula {
     private Sinal[] permissao;
 
     public Sinalizacao(int qntdDeCruzamentos){
-        this.cruzamento = new Via[qntdDeCruzamentos];
         this.permissao = new Sinal[qntdDeCruzamentos];
 
         for(int i = 0; i < qntdDeCruzamentos; i++){
             permissao[i] = Sinal.PARE;
         }
-    }
-
-    public void setCruzamento(int index, Via via){
-        this.cruzamento[index] = via;
-    }
-
-    public Sinal canGo(Object via){
-        for(int i = 0; i < this.cruzamento.length; i++) {
-            if (this.cruzamento[i].equals(via)){
-                return permissao[i];
-            }
-        }
-        return Sinal.PARE;
     }
 
     public void setPermissao(int index, Sinal sinal){
@@ -30,5 +15,17 @@ public class Sinalizacao {
 
     public Sinal getPermissao(int index){
         return permissao[index];
+    }
+
+    public void bloquear(){
+        for (int i = 0; i < permissao.length; i++){
+            permissao[i] = Sinal.PARE;
+        }
+    }
+
+    public void desbloquear(){
+        for (int i = 0; i < permissao.length; i++){
+            permissao[i] = Sinal.LIVRE;
+        }
     }
 }
